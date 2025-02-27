@@ -1,0 +1,31 @@
+services:
+  fastapi:
+    environment:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_HOST: db
+      DB_PORT: ${DB_PORT}
+
+      WEATHER_API_KEY: ${WEATHER_API_KEY}
+      GEO_URL: ${GEO_URL}
+      WEATHER_URL: ${WEATHER_URL}
+
+      MODE: ${MODE}
+
+    build: .
+    ports:
+      - "83:80"
+    env_file:
+      - .env
+    depends_on:
+      - db
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    env_file:
+      - .env
+
