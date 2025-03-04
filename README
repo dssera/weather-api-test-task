@@ -6,3 +6,7 @@ A bit about the API:
 2. The service layer is covered by unit tests (also async).
 3. When running tests, all operations happen in a test database.
 4. Both the app and the database are in Docker containers, which are started by Docker Compose.
+
+
+P.S 
+I left the .env file with api token for your convenience
